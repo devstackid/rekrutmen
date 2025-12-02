@@ -1,68 +1,58 @@
 <?php include('./layouts/header.php') ?>
-<?php 
-      session_start();
+<?php
+session_start();
 ?>
 
-<title>Login</title>
+<title>Hatara Coffee - Aplikasi Rekrutmen & Seleksi Karyawan</title>
 
 
-
-<div class="w-full h-screen overflow-hidden grid lg:grid-cols-3 grid-cols-1 p-0">
-  <div class="flex items-center h-screen justify-center z-30">
-    <div>
-      <h1 class="text-center text-3xl font-black text-blue-700">Login
-        <span class="block text-xs font-normal text-black">Harap masuk untuk melanjutkan</span>
-      </h1>
-
-      <?php
-      if (isset($_SESSION['result'])) {
-        if ($_SESSION['result'] != 'success') {
-      ?>
-          <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-300 max-w-[300px] mx-auto mt-5" role="alert">
-            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-            </svg>
-            <div>
-              <span class="font-medium">Maaf!</span> <?= $_SESSION['message'] ?>
+<nav class="w-full sticky top-0 bg-white/70 backdrop-blur-md z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex-shrink-0 flex items-center gap-2">
+                <div class="w-10 h-10 rounded-full overflow-hidden mx-auto border-2 border-black mb-2">
+                    <img src="./assets/img/hatara.jpg" class="w-full h-full object-cover" alt="">
+                </div>
+                <a href="./" class="text-lg font-semibold text-black">Hatara Coffee</a>
             </div>
-          </div>
-
-      <?php
-        }
-        unset($_SESSION['result']);
-        unset($_SESSION['message']);
-      }
-      ?>
-
-
-
-      <form class="mt-8" action="config/login_proses.php" method="POST">
-        <div class="mb-5">
-          <label for="username" class="block mb-2 text-xs font-medium text-gray-900">Username</label>
-          <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg placeholder:text-xs focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-2">
+                    <!-- <a href="./" class="text-sm font-medium text-gray-700 hover:text-black px-3 py-2 rounded-md mr-4">Beranda</a> -->
+                    <a href="login.php" class="text-sm font-medium text-white bg-black hover:bg-gray-800 px-3 py-2 rounded-md">Masuk</a>
+                    <a href="register.php" class="text-sm font-medium text-black bg-gray-100 hover:bg-gray-800 px-3 py-2 rounded-md">Daftar</a>
+                </div>
+            </div>
         </div>
-        <div class="mb-5">
-          <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-          <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg placeholder:text-xs focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-        </div>
-        <div class="grid grid-cols-3 gap-1">
-          <button type="submit" class="col-span-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center">Masuk</button>
-         
-
-        </div>
-      </form>
     </div>
-  </div>
-  <div class="absolute inset-0 z-20 lg:hidden z-[21] bg-gradient-to-tr from-white/50 to-blue-500/50 backdrop-blur-sm">
 
-  </div>
-  <div class="h-full lg:col-span-2 lg:flex absolute inset-0 lg:relative z-20">
-    <img src="/assets/img/kedai.JPG" class="object-cover h-full" alt="">
-  </div>
+</nav>
+
+<div class="grid grid-cols-2 items-center justify-center px-20 pt-10 gap-20">
+    <div class="">
+        <h1 class="text-3xl">Selamat Datang di Website Rekrutmen dan Seleksi Penerimaan Karyawan Kedai Kopi Hatara</h1>
+        <div class="mt-3"><span class="text-sm">Ingin bergabung dan melamar pekerjaan? <a href="register.php" class="px-5 py-2.5 mt-2 bg-black text-white rounded-md block w-max">Daftar Sekarang</a></span></div>
+    </div>
+    <img src="./assets/img/kedaikopihatara.jpg" class="rounded-xl" alt="">
 </div>
 
-<div class="w-full text-center justify-center py-5 border-t text-sm font-normal text-black/50">
-<span>Copyright &copy; Ahmad Muhtami 2025</span>
+<div class="grid grid-cols-3 gap-5 px-20 mt-10 mb-32">
+    <div class="p-7 bg-neutral-100 rounded-md min-h-[40vh] flex flex-col items-center justify-center">
+        <h1 class="mb-2 font-bold">1. Masuk</h1>
+        <p class="text-center text-sm">Buat akun atau registrasi terlebih dahulu. Jika telah memiliki akun, silakan masuk.</p>
+    </div>
+    <div class="p-7 bg-neutral-100 rounded-md min-h-[40vh] flex flex-col items-center justify-center">
+        <h1 class="mb-2 font-bold">2. Pilih Lowongan Kerja</h1>
+        <p class="text-center text-sm">Pilih lowongan kerja yang tersedia sesuai bidang pekerjaan yang ingin dilamar, isi data diri dan lakukan tes seleksi penerimaan kerja</p>
+
+    </div>
+    <div class="p-7 bg-neutral-100 rounded-md min-h-[40vh] flex flex-col items-center justify-center">
+        <h1 class="mb-2 font-bold">3. Selesai</h1>
+        <p class="text-center text-sm">Terima informasi status hasil rekrutmen dan seleksi penerimaan karyawan</p>
+    </div>
+</div>
+
+<div class="w-full text-center bg-white justify-center py-5 border-t fixed z-50 bottom-0 left-0 right-0 text-sm font-normal text-black/50">
+    <span>Copyright &copy; Ahmad Muhtami 2025</span>
 
 </div>
 

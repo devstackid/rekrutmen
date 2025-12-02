@@ -5,11 +5,11 @@ if (isset($_POST['update'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
     $username = $_POST['username'];
-    $no_telp = $_POST['no_telp'];
+    $nomor_telepon = $_POST['nomor_telepon'];
     $role = $_POST['role'];
 
     // Mulai query dasar tanpa password
-    $query = "UPDATE users SET nama = '$nama', username = '$username', no_telp = '$no_telp', role = '$role'";
+    $query = "UPDATE pengguna SET nama = '$nama', username = '$username', nomor_telepon = '$nomor_telepon', role = '$role'";
 
     // Jika ada password baru, tambahkan dalam query
     if (!empty($_POST['password'])) {

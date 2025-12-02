@@ -4,14 +4,14 @@ include '../config/koneksi.php';
 $nama = $_POST['nama'];
 $username = $_POST['username'];
 $password = md5($_POST['password']);
-$no_telp = $_POST['no_telp'];
+$nomor_telepon = $_POST['nomor_telepon'];
 $role = $_POST['role'];
 
 
 
 if (isset($_POST['tambah'])) {
-    $querytransaksi = "INSERT INTO users (nama, username, password, no_telp, role) 
-                           VALUES ('$nama', '$username', '$password', '$no_telp', '$role')";
+    $querytransaksi = "INSERT INTO pengguna (nama, username, password, nomor_telepon, role) 
+                           VALUES ('$nama', '$username', '$password', '$nomor_telepon', '$role')";
         $resulttransaksi = mysqli_query($koneksi, $querytransaksi);
 
         if ($resulttransaksi) {

@@ -65,7 +65,7 @@
            <div class="col-3">
                <div class="form-group">
                  <label>No. Telepon</label>
-                 <input type="text" name="no_telp" class="form-control " id="no_telp" placeholder="Nomor Telepon">
+                 <input type="text" name="nomor_telepon" class="form-control " id="nomor_telepon" placeholder="Nomor Telepon">
                </div>
              </div>
 
@@ -75,8 +75,7 @@
                  <select class="form-control" name="role" id="role">
                    <option value="">Pilih</option>
                    <option value="admin">Admin</option>
-                   <option value="kasir">Kasir</option>
-                   <option value="owner">Owner</option>
+                   <option value="pelamar">Pelamar</option>
                  </select>
                </div>
              </div>

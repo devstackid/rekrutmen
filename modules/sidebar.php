@@ -1,17 +1,17 @@
-<ul class="navbar-nav sidebar sidebar-dark accordion" style="border-right: 1px solid #d3d3d3; background-color: burlywood;" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark bg-dark accordion" style="border-right: 1px solid #d3d3d3;" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <div class="position-relative " style="min-height: 30vh; background-image: url(../assets/img/kedai.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <div class="position-absolute bg-dark" style="top: 0; left:0; right:0; bottom:0; z-index:10; opacity: 40%;">
+  <div class="position-relative ">
+    <div class="position-absolute bg-dark" style="top: 0; left:0; right:0; bottom:0; z-index:10;">
 
     </div>
-    <a class="sidebar-brand d-flex align-items-center position-relative" style="z-index: 11;">
+    <a class="sidebar-brand d-flex align-items-center position-relative border-bottom border-secondary shadow-lg" style="z-index: 11;">
       <div class="sidebar-brand-icon">
         <td>
           <img src="../assets/img/hatara.jpg" height="40" alt="" class="gambar rounded-circle" style="border: 3px solid white;">
         </td>
       </div>
-      <div class="sidebar-brand-text mx-3" style="font-weight: 400; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Hatara </div>
+      <div class="sidebar-brand-text mx-3 text-capitalize" style="font-weight: 400; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Hatara </div>
 
     </a>
     <!-- Sidebar Toggler (Sidebar) -->
@@ -21,10 +21,17 @@
       </button>
     </div>
 
-    <h1 class="h6 text-center position-relative text-white mt-4" style="z-index: 11; font-size: 14px;">
-      <span class="d-block">@<?= $_SESSION['username'] ?></span>
-      <span class="d-block font-weight-normal"><?= $_SESSION['role'] ?></span>
-    </h1>
+    <div class="sidebar-brand d-flex align-items-center position-relative" style="z-index: 11;">
+      <div class="sidebar-brand-text mr-3">
+        <td>
+          <img src="../assets/img/profile.svg" height="40" alt="" class="gambar rounded-circle" style="border: 3px solid white;">
+        </td>
+      </div>
+      <div class="text-capitalize" style="font-weight: 400; font-size: 14px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">@<?= $_SESSION['username'] ?> </div>
+
+    </div>
+
+
 
   </div>
 
@@ -38,29 +45,37 @@
   <!-- Divider -->
   <!-- <hr class="sidebar-divider"> -->
 
-  <div class="sidebar-heading font-weight-normal text-white mt-4">
+  <div class="sidebar-heading font-weight-normal text-white mt-2">
     Menu
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed text-white" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-database"></i>
-      <span>Data Master</span>
+    <a class="nav-link" href="index.php">
+      <i class="fa fa-home"></i>
+      <span>Beranda</span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <!-- <h6 class="collapse-header">Master Data:</h6> -->
-        <?php if ($_SESSION['role'] == 'admin') : ?>
-          <a class="collapse-item" href="users.php">Pengguna</a>
-        <?php endif; ?>
 
-        <a class="collapse-item" href="diskon.php">Diskon</a>
-        <a class="collapse-item" href="kategori.php">Kategori</a>
-        <a class="collapse-item" href="katalog.php">Katalog</a>
-      </div>
-    </div>
   </li>
+  <?php if ($_SESSION['role'] == 'admin') : ?>
+    <li class="nav-item">
+      <a class="nav-link collapsed text-white" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-database"></i>
+        <span>Data Master</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <!-- <h6 class="collapse-header">Master Data:</h6> -->
+          <a class="collapse-item" href="users.php">Pengguna</a>
+
+          <a class="collapse-item" href="bidang-pekerjaan.php">Bidang Pekerjaan</a>
+          <a class="collapse-item" href="lowongan.php">Lowongan Kerja</a>
+          <a class="collapse-item" href="pertanyaan.php">Pertanyaan</a>
+        </div>
+      </div>
+    </li>
+
+  <?php endif; ?>
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
@@ -70,11 +85,20 @@
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="transaksi.php">Transaksi Pesanan</a>
-        <a class="collapse-item" href="proses-pesanan.php">Pesanan Diproses</a>
+        <?php if ($_SESSION['role'] == 'admin') : ?>
+          <a class="collapse-item" href="rekrutmen.php">Rekrutmen</a>
+          <a class="collapse-item" href="seleksi.php?page=diterima">Seleksi Diterima</a>
+          <a class="collapse-item" href="seleksi.php?page=ditolak">Seleksi Ditolak</a>
+        <?php else: ?>
+          <a class="collapse-item" href="rekrutmen.php?page=lamar">Rekrutmen</a>
+          <a class="collapse-item" href="seleksi.php?page=seleksi">Tes Seleksi</a>
+
+        <?php endif; ?>
       </div>
     </div>
   </li>
+        <?php if ($_SESSION['role'] == 'admin') : ?>
+
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="laporan">
       <i class="fas fa-file"></i>
@@ -82,16 +106,32 @@
     </a>
     <div id="laporan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="laporan-harian.php">Laporan Harian</a>
-
-        <a class="collapse-item" href="laporan-penjualan.php">Laporan Penjualan</a>
-        <?php if ($_SESSION['role'] == 'admin') : ?>
-          <a class="collapse-item" href="laporan-pelanggan.php">Laporan Pelanggan</a>
-          <a class="collapse-item" href="laporan-produk-terlaris.php">Laporan Produk Terlaris</a>
-          <a class="collapse-item" href="laporan-penjualan-kategori.php">Kategori Pembelian</a>
-        <?php endif; ?>
+        
+          <a class="collapse-item" href="laporan-lowongan-kerja.php">Lowongan Kerja</a>
+          <a class="collapse-item" href="laporan-rekrutmen.php">Rekrutmen Karyawan</a>
+          <a class="collapse-item" href="laporan-seleksi-diproses.php">Seleksi Diproses</a>
+          <a class="collapse-item" href="laporan-seleksi-diterima.php">Seleksi Diterima</a>
+          <a class="collapse-item" href="laporan-seleksi-ditolak.php">Seleksi Ditolak</a>
       </div>
     </div>
+  </li>
+        <?php endif; ?>
+
+  <?php if ($_SESSION['role'] == 'pelamar'): ?>
+    <li class="nav-item">
+      <a class="nav-link" href="profil.php?page=update">
+        <i class="fa fa-user"></i>
+        <span>Pengaturan Profil</span>
+      </a>
+
+    </li>
+  <?php endif; ?>
+  <li class="nav-item">
+    <a class="nav-link" href="../config/logout.php">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Keluar</span>
+    </a>
+
   </li>
 
   <!-- Heading -->
@@ -100,7 +140,7 @@
 
 
   <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block">
+  <!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
 
 

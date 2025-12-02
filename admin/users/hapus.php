@@ -6,19 +6,12 @@ $id = $_GET['id'];
 mysqli_begin_transaction($koneksi);
 
 try {
-    // Hapus data dari tabel members terkait dengan user
-    $queryMember = "DELETE FROM members WHERE user_id = '$id'";
-    $resultMember = mysqli_query($koneksi, $queryMember);
-    if (!$resultMember) {
-        throw new Exception('Gagal menghapus data members.');
-    }
-
-
+    
     // Hapus data dari tabel users
-    $queryUser = "DELETE FROM users WHERE id = '$id'";
+    $queryUser = "DELETE FROM pengguna WHERE id = '$id'";
     $resultUser = mysqli_query($koneksi, $queryUser);
     if (!$resultUser) {
-        throw new Exception('Gagal menghapus data user.');
+        throw new Exception('Gagal menghapus data pengguna.');
     }
 
     // Jika semua query berhasil, commit transaksi

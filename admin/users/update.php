@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Query untuk mendapatkan data dari database berdasarkan ID
-    $query = "SELECT * FROM users WHERE id = $id";
+    $query = "SELECT * FROM pengguna WHERE id = $id";
     $result = mysqli_query($koneksi, $query);
     $row = mysqli_fetch_assoc($result);
 
@@ -86,7 +86,7 @@ if (isset($_GET['id'])) {
             <div class="col-3">
               <div class="form-group">
                 <label>No. Telepon</label>
-                <input type="text" name="no_telp" class="form-control" id="no_telp" placeholder="Nomor Telepon" value="<?= $row['no_telp']; ?>">
+                <input type="text" name="nomor_telepon" class="form-control" id="nomor_telepon" placeholder="Nomor Telepon" value="<?= $row['nomor_telepon']; ?>">
               </div>
             </div>
 
@@ -96,8 +96,7 @@ if (isset($_GET['id'])) {
                 <select class="form-control" name="role" id="role">
                   <option value="">Pilih</option>
                   <option value="admin" <?= $row['role'] == 'admin' ? 'selected' : ''; ?>>Admin</option>
-                  <option value="kasir" <?= $row['role'] == 'kasir' ? 'selected' : ''; ?>>Kasir</option>
-                  <option value="owner" <?= $row['role'] == 'owner' ? 'selected' : ''; ?>>Owner</option>
+                  <option value="pelamar" <?= $row['role'] == 'pelamar' ? 'selected' : ''; ?>>Pelamar</option>
                 </select>
               </div>
             </div>

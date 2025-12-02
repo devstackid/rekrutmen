@@ -4,7 +4,7 @@
 
   <div class="d-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 text-gray-800">Data Pengguna </h1>
-    <a href="users.php?page=tambah" class="btn btn-primary">Tambah</a>
+    <a href="users.php?page=tambah" class="btn btn-dark">Tambah</a>
 
   </div>
   <!-- Page Heading -->
@@ -59,7 +59,7 @@
             <?php
             include_once '../config/koneksi.php';
             $no = 1;
-            $query = "SELECT * FROM users 
+            $query = "SELECT * FROM pengguna 
             ORDER BY id DESC";
             $result = mysqli_query($koneksi, $query);
 
@@ -70,8 +70,8 @@
                 <td><?= $row['nama']; ?></td>
                 <td><?= $row['username']; ?></td>
                 <td>
-                  <?php if (!empty($row['no_telp'])) : ?>
-                    <?= htmlspecialchars($row['no_telp']); ?>
+                  <?php if (!empty($row['nomor_telepon'])) : ?>
+                    <?= htmlspecialchars($row['nomor_telepon']); ?>
                   <?php else: ?>
                     -
                   <?php endif; ?>
