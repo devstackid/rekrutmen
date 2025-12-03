@@ -126,7 +126,7 @@ ORDER BY rekrutmen.id DESC
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-12 border-bottom pt-3">
-                            <h1 class="h5 mb-3">Informasi Pribadi</h1>
+                          <h1 class="h5 mb-3">Informasi Pribadi</h1>
 
                           <p><strong>Nama Pelamar :</strong> <span class="d-block"><?= $row['nama_pelamar']; ?></span></p>
                           <p><strong>Posisi/Jabatan :</strong> <span class="d-block"><?= $row['judul_lowongan']; ?></span></p>
@@ -142,7 +142,7 @@ ORDER BY rekrutmen.id DESC
 
                         </div>
                         <div class="col-12 border-bottom pt-3">
-                            <h1 class="h5 mb-3">Jawaban Tes Seleksi</h1>
+                          <h1 class="h5 mb-3">Jawaban Tes Seleksi</h1>
 
                           <?php
                           $no = 1;
@@ -157,15 +157,16 @@ ORDER BY rekrutmen.id DESC
                         </div>
                         <hr>
                         <div class="col-12 pt-3">
-                            <h1 class="h5">Lampiran</h1>
-                            <img src="../uploads/<?= $row['cv'] ?>" alt="">
-                            <?php 
-                            $queryLampiran = "SELECT * FROM lampiran WHERE rekrutmen_id = " . $row['id'] . " AND pelamar_id = " . $row['pelamar_id'];
-                            $lampiran_result = mysqli_query($koneksi, $queryLampiran);
-                            ?>
-                            <?php while ($lampiran = mysqli_fetch_assoc($lampiran_result)) { ?>
-                                <a href="../uploads/<?= $lampiran['lampiran']; ?>" target="_blank"><?= $lampiran['lampiran']; ?></a>
-                            <?php } ?>
+                          <h1 class="h5">Lampiran</h1>
+                          <a href="../uploads/<?= $row['cv']; ?>" target="_blank" class="btn btn-outline-primary d-block w-100 text-left mb-2"><?= $row['cv']; ?></a>
+
+                          <?php
+                          $queryLampiran = "SELECT * FROM lampiran WHERE rekrutmen_id = " . $row['id'] . " AND pelamar_id = " . $row['pelamar_id'];
+                          $lampiran_result = mysqli_query($koneksi, $queryLampiran);
+                          ?>
+                          <?php while ($lampiran = mysqli_fetch_assoc($lampiran_result)) { ?>
+                            <a href="../uploads/<?= $lampiran['lampiran']; ?>" target="_blank" class="btn btn-outline-primary d-block w-100 text-left mb-2"><?= $lampiran['lampiran']; ?></a>
+                          <?php } ?>
                         </div>
                       </div>
                     </div>

@@ -11,20 +11,22 @@ $queryLamaranByUser = "
 
 $resultLamaranByUser = mysqli_query($koneksi, $queryLamaranByUser);
 
-// JIKA USER BELUM PERNAH MELAMAR
+// Cek apakah ada lamaran
 if (mysqli_num_rows($resultLamaranByUser) == 0) {
-    echo "<script>alert('Anda belum melamar pekerjaan, silahkan lamar pekerjaan dengan memilih lowongan pekerjaan yang tersedia');</script>";
+    echo "<script>alert('Anda belum melamar pekerjaan, silahkan lamar pekerjaan.');</script>";
     echo "<script>window.location='rekrutmen.php?page=lamar';</script>";
     exit();
-}elseif($lamaranData = mysqli_fetch_assoc($resultLamaranByUser)){
-    if($lamaranData['status'] != 'menunggu' && $lamaranData['status'] != 'diproses'){
-        echo "<script>window.location='rekrutmen.php?page=status-rekrutmen';</script>";
-        exit();
-    }
 }
 
-// AMBIL DATA LAMARANNYA
+// Ambil data lamaran SEKALI SAJA
 $lamaran = mysqli_fetch_assoc($resultLamaranByUser);
+
+// Cek status lamaran
+if ($lamaran['status'] != 'menunggu' && $lamaran['status'] != 'diproses') {
+    echo "<script>window.location='rekrutmen.php?page=status-rekrutmen';</script>";
+    exit();
+}
+
 
 // QUERY PERTANYAAN UNTUK LOWONGAN YANG DILAMAR
 $lowongan_id = $lamaran['lowongan_id'];

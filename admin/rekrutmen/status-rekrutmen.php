@@ -76,7 +76,6 @@ JOIN lowongan_kerja
     ON rekrutmen.lowongan_id = lowongan_kerja.id
 JOIN bidang_pekerjaan 
     ON lowongan_kerja.bidang_pekerjaan_id = bidang_pekerjaan.id
-    WHERE rekrutmen.status <> 'menunggu'
 ORDER BY rekrutmen.id DESC
 ";
 

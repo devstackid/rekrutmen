@@ -27,7 +27,7 @@
           <img src="../assets/img/profile.svg" height="40" alt="" class="gambar rounded-circle" style="border: 3px solid white;">
         </td>
       </div>
-      <div class="text-capitalize" style="font-weight: 400; font-size: 14px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">@<?= $_SESSION['username'] ?> </div>
+      <div class="text-capitalize sidebar-brand-text font-weight-normal" style="font-size: 14px; ">@<?= $_SESSION['username'] ?> </div>
 
     </div>
 

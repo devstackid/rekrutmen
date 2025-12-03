@@ -27,7 +27,7 @@ if (isset($_POST['kirim'])) {
 
     $_SESSION['result']  = 'success';
     $_SESSION['message'] = 'Jawaban berhasil dikirim!';
-    header("Location: seleksi.php?page=tampil");
+    header("Location: rekrutmen.php?page=status-rekrutmen");
     exit();
 }
 ?>
